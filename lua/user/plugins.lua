@@ -90,7 +90,8 @@ return packer.startup(function(use)
 	})
 
 	-- Git
-	use({ "lewis6991/gitsigns.nvim", commit = "c18e016864c92ecf9775abea1baaa161c28082c3" })
+	-- use({ "lewis6991/gitsigns.nvim", commit = "c18e016864c92ecf9775abea1baaa161c28082c3" })
+	use({ "lewis6991/gitsigns.nvim", commit = "9d18976c10413e52d76d41a771f042704786ce2e" })
 
   -- Colorschemes BOD
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
