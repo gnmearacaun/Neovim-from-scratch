@@ -92,6 +92,30 @@ return packer.startup(function(use)
 	-- Git
 	use({ "lewis6991/gitsigns.nvim", commit = "c18e016864c92ecf9775abea1baaa161c28082c3" })
 
+  -- Colorschemes BOD
+  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use "lunarvim/onedarker.nvim"
+  use "gnmearacaun/onedarkcomment.nvim"
+
+  use "vim-scripts/autoscroll.vim"
+
+  use "vimwiki/vimwiki"
+	-- { "vim-scripts/autoscroll.vim", event = "BufRead", opt = true },
+  -- Vimwiki
+	-- { "vimwiki/vimwiki", event = "BufWinEnter" },
+  -- use {
+  --     'vimwiki/vimwiki',
+  --     config = function()
+  --         vim.g.vimwiki_list = {
+  --             {
+  --                 path = '/home/briain/scripts/vimwiki/',
+  --                 syntax = 'markdown',
+  --                 ext = '.md',
+  --             }
+  --         }
+  --     end
+  -- }
+  
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
