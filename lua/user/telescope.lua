@@ -11,15 +11,14 @@ telescope.setup {
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },
-
+    sorting_strategy = "ascending",
+    prompt_position = "top",
     mappings = {
       i = {
         ["<C-n>"] = actions.cycle_history_next,
         ["<C-p>"] = actions.cycle_history_prev,
-
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
-
         ["<C-c>"] = actions.close,
 
         ["<Down>"] = actions.move_selection_next,
@@ -85,6 +84,40 @@ telescope.setup {
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
+    buffers = {
+      layout_config = {
+        preview_width = 0.0,
+        prompt_position = "top",
+      },
+    },
+    live_grep = {
+      layout_config = {
+        preview_width = 0.6,
+        prompt_position = "top",
+      },
+    },
+    find_files = {
+      layout_config = {
+        prompt_position = "top",
+      },
+    },
+    git_files = {
+      show_untracked = true,
+      layout_config = {
+        prompt_position = "top",
+        -- TODO: sort by last_modified
+      },
+    },
+    commands = {
+      layout_config = {
+        prompt_position = "top",
+      },
+    },
+    git_status = {
+      layout_config = {
+        prompt_position = "top",
+      },
+    },
   },
   extensions = {
     -- Your extension configuration goes here:
@@ -94,3 +127,5 @@ telescope.setup {
     -- please take a look at the readme of the extension you want to configure
   },
 }
+
+

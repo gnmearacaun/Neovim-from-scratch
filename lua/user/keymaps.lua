@@ -129,8 +129,8 @@ keymap("n", "q", "<C-w>q", opts)
 --keymap('n', 'q', 'Q`]', opts)
 
 -- Markdown Preview keybindings
-keymap("n", "ms", "<cmd>MarkdownPreview<CR>", opts)
-keymap("n", "tm", "<Plug>MarkdownPreviewToggle", opts)
+keymap("n", "tm", "<cmd>MarkdownPreview<CR>", opts)
+keymap("n", "tg", "<Plug>MarkdownPreviewToggle", opts)
 
 -- autoscroll plugin
 keymap("n", "ts", "<cmd>ScrollDown<CR>", opts)
