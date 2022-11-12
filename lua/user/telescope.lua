@@ -104,6 +104,7 @@ telescope.setup {
     git_files = {
       show_untracked = true,
       layout_config = {
+        preview_width = 0.6,
         prompt_position = "top",
         -- TODO: sort by last_modified
       },
