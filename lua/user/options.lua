@@ -36,13 +36,21 @@ local options = {
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
 }
 
-vim.opt.shortmess:append "c"
-
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
---vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
-vim.api.nvim_create_autocmd({"FileType"}, {command = "set formatoptions-=cro"})
+vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+vim.opt.iskeyword:append "-" -- used in searching and recognizing with many commands
+vim.opt.whichwrap:append "<,>,[,],h,l" -- let movement keys reach the previous line
+vim.opt.shortmess:append "c" -- don't show the dumb matching stuff
+-- To stop inserting the current comment leader automatically 
+vim.opt.formatoptions:remove({ "c", "r", "o" })
+-- vim.opt.formatoptions:remove("c")	--	Auto-wrapping comments using 'textwidth' 
+-- vim.opt.formatoptions:remove("r")	--	Hitting <Enter> in Insert mode.
+-- vim.opt.formatoptions:remove("o")	--	Hitting 'o' or 'O' in Normal mode.  
+vim.filetype.add {  --to get better highlighting for .conf files
+  extension = {
+    conf = "dosini",
+  },
+}
