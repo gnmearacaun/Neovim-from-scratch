@@ -1,7 +1,7 @@
 local options = {
   backup = false,                          -- creates a backup file
   clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
-  cmdheight = 1,                           -- more space in the neovim command line for displaying messages
+  cmdheight = 1,                           -- space under the statusline for displaying messages
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   conceallevel = 0,                        -- so that `` is visible in markdown files
   fileencoding = "utf-8",                  -- the encoding written to a file
@@ -13,11 +13,11 @@ local options = {
   showtabline = 2,                         -- always show tabs
   smartcase = true,                        -- smart case
   smartindent = true,                      -- make indenting smarter again
-  splitbelow = true,                       -- force all horizontal splits to go below current window
-  splitright = true,                       -- force all vertical splits to go to the right of current window
+  splitbelow = true,                       -- force horizontal splits below current window
+  splitright = true,                       -- force vertical splits to the right of current window
   swapfile = false,                        -- creates a swapfile
   -- termguicolors = true,                    -- set term gui colors (most terminals support this)
-  timeoutlen = 400,                        -- time to wait for a mapped sequence to complete (in milliseconds)
+  timeoutlen = 400,                        -- time for a mapped sequence to complete (in milliseconds)
   undofile = true,                         -- enable persistent undo
   updatetime = 300,                        -- faster completion (4000ms default)
   writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
@@ -28,10 +28,10 @@ local options = {
   number = true,                           -- set numbered lines
   relativenumber = false,                  -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
-  signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
-  wrap = true,                            -- display lines as one long line
-  linebreak = true,
-  scrolloff = 8,                           -- is one of my fav
+  signcolumn = "yes",                      -- always show the sign column. If not, it shifts the text each time
+  wrap = true,                             -- wrap long lines
+  linebreak = true,                        -- break lines, not words
+  whichwrap = "bs<>[]hl",                  -- which "horizontal" keys are allowed to travel to prev/next line
   sidescrolloff = 8,
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
 }
@@ -41,14 +41,10 @@ for k, v in pairs(options) do
 end
 
 vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-vim.opt.iskeyword:append "-" -- used in searching and recognizing with many commands
-vim.opt.whichwrap:append "<,>,[,],h,l" -- let movement keys reach the previous line
-vim.opt.shortmess:append "c" -- don't show the dumb matching stuff
--- To stop inserting the current comment leader automatically 
-vim.opt.formatoptions:remove({ "c", "r", "o" })
--- vim.opt.formatoptions:remove("c")	--	Auto-wrapping comments using 'textwidth' 
--- vim.opt.formatoptions:remove("r")	--	Hitting <Enter> in Insert mode.
--- vim.opt.formatoptions:remove("o")	--	Hitting 'o' or 'O' in Normal mode.  
+-- vim.opt.shortmess = "ilmnrx"                        -- flags to shorten vim messages, see :help 'shortmess'
+vim.opt.iskeyword:append "-"                           -- hyphenated words recognized by searches and movements
+vim.opt.shortmess:append "c"                           -- don't give |ins-completion-menu| messages
+vim.opt.formatoptions:remove({ "c", "r", "o" })        -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 vim.filetype.add {  --to get better highlighting for .conf files
   extension = {
     conf = "dosini",
